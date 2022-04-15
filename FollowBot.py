@@ -56,7 +56,7 @@ class InstagramBot:
             usuario="tgmmbr"
             senha=mesma
         elif(perfil==2 or perfil=="tim" ):
-            usuario="timastecamaia"
+            usuario="malufrachiid"
             senha="mariezita"
         elif(perfil==3 or perfil=="ganhei"):
             usuario="ganheirachid"
@@ -259,9 +259,15 @@ class InstagramBot:
         self.scroll_down(scroll)
 
         elements = driver.find_elements_by_xpath("//*[text()='Follow']")
+        elements.reverse()
         for i in elements:
-            i.click()
-            time.sleep(30)
+            try:
+                #pdb.set_trace()
+                i.click()
+                time.sleep(30)
+            except Exception as e:
+                print(e)
+                pass
         self.rolar_no_explorar(30)
         self.relatorio(len(elements), perfil, id)
 

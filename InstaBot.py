@@ -220,7 +220,7 @@ class InstagramBot:
         ]
         time.sleep(5)
         if(id=="iphone"):
-            link="https://www.instagram.com/p/Cb_Qx_bAiRT/"
+            link="https://www.instagram.com/p/CcGRXzLFdfW/"
         elif(id=="big"):
             link="https://www.instagram.com/p/Cb-9wW4Of66/"
         driver.get(link)
@@ -241,6 +241,12 @@ class InstagramBot:
 
                 print("Comentou " + id)
                 time.sleep(random.randint(2, 4))
+                
+                # text = driver.find_element_by_xpath("//*[@aria-label='Add a comment…']").text
+                # time.sleep(15)
+                # if text == texto:
+                #     raise Exception("Ops! Tio Marks parou de enviar o comentário!")
+
 
             except Exception as e:
                 print("\n\nBloqueou!"+id)
@@ -298,7 +304,7 @@ class InstagramBot:
             usuario="tgmmbr"
             senha=mesma
         elif(perfil==2 or perfil=="tim" ):
-            usuario="timastecamaia"
+            usuario="malufrachiid"
             senha="mariezita"
         elif(perfil==3 or perfil=="ganhei"):
             usuario="ganheirachid"
