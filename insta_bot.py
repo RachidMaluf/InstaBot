@@ -63,43 +63,43 @@ class InstaBot:
             usuario="malufrachiid"
             senha="mariezita"
         elif(perfil==3 or perfil=="ganhei"):
-            usuario="ganheirachid"
+            usuario="rachidgomesm"
             senha=mesma
         elif(perfil==4 or perfil=="marie"):
             usuario="mariemalufdog"
             senha="mariezita"
         elif(perfil==5 or perfil=="sortudo"):
-            usuario="rachidsortudo"
+            usuario="rachmaluf"
             senha=mesma
         elif(perfil==6 or perfil=="thimianss"):
             usuario="thimianss"
             senha=mesma
         elif(perfil==7 or perfil=="vempropai"):
-            usuario="vempro.pai"
+            usuario="rachgomesss"
             senha=mesma
         elif(perfil==8 or perfil=="ganhareii"):
-            usuario="rachidganhareii"
+            usuario="_rachidm"
             senha=mesma
         elif(perfil==9 or perfil=="vou"):
-            usuario="vou.ganhaaar"
+            usuario="rachidgomess"
             senha="mariza123"
         #elif(perfil==10 or perfil=="queijo"):
         #   usuario="queijodobao"
         #  senha=mesma
         elif(perfil==11 or perfil=="vemmg"):
-            usuario="vempramg"
+            usuario="rachgomes"
             senha=mesma
         elif(perfil==12 or perfil=="ganhadore"):
-            usuario="rachidganhadore"
+            usuario="rachidmaluuf"
             senha="mariza123"
         elif(perfil==13 or perfil=="ganharei"):
-            usuario="ganhareitenhofe"
+            usuario="rachidgomesss"
             senha=mesma
         elif(perfil==14 or perfil=="sorte"):
-            usuario="rachidsorte"
+            usuario="rachidgmm"
             senha=mesma
         elif(perfil==15 or perfil=="ganhou"):
-            usuario="rachidganhou"
+            usuario="rachgmm"
             senha="mariza123"
         try:
             time.sleep(0.1)

@@ -208,6 +208,7 @@ class Comment(InstaBot):
                         "🦨🦡🦦🦥🍃🍂🍄🍄🪨🌾💐🌹🥀🌺🌼🌻🌞🌝🌛🌚"
         ]
         time.sleep(5)
+        self.rolar_no_explorar(30)
         if(id=="iphone"):
             link="https://www.instagram.com/p/CcGRXzLFdfW/"
         elif(id=="big"):
@@ -230,11 +231,11 @@ class Comment(InstaBot):
 
                 print("Comentou " + id)
                 time.sleep(random.randint(2, 4))
+                time.sleep(5)
                 
-                # text = driver.find_element_by_xpath("//*[@aria-label='Add a comment…']").text
-                # time.sleep(15)
-                # if text == texto:
-                #     raise Exception("Ops! Tio Marks parou de enviar o comentário!")
+                text = driver.find_element_by_xpath("//*[@aria-label='Add a comment…']").text
+                if text == texto:
+                    raise Exception("Ops! Tio Marks parou de enviar o comentário!")
 
 
             except Exception as e:
