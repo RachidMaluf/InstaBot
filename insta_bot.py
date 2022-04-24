@@ -25,16 +25,28 @@ class InstaBot:
             single_input_field.send_keys(letter)
             time.sleep(random.randint(1, 2) /60)
 
-    def driblar(self, link, tempo):
-        driver = self.driver
+    def giveaway_data(self, id = "all"):
         time.sleep(5)
-        driver.get("https://www.instagram.com/explore/")
-        for i in range(4,6):  # Altere o segundo valor aqui para que ele desça a quantidade de páginas que você quiser: quer que ele desça 5 páginas então você deve alterar de range(1,3) para range(1,5)
-            driver.execute_script(
-                "window.scrollTo(0, document.body.scrollHeight);")
-            time.sleep(tempo)
-        driver.get(link)
-        time.sleep(5)
+        self.rolar_no_explorar(30)
+        if(id=="iphone"):
+            link = "https://www.instagram.com/p/CcGRXzLFdfW/"
+            follow_link = "https://www.instagram.com/sorteiosjohn/"
+        elif(id=="gomez"):
+            link = "https://www.instagram.com/p/CcWQSHUrs15/"
+            follow_link = "https://www.instagram.com/acao500gratis/"
+        elif(id=="gustavo"):
+            link = "https://www.instagram.com/p/CcN0UrbuIc3/"
+            follow_link = "https://www.instagram.com/gustavin_assessoria/"
+        elif(id=="bruno"):
+            link = "https://www.instagram.com/p/CcapO5cuNW0/"
+            follow_link = "https://www.instagram.com/2.000_no_pix_projeto_brunao/"
+        elif(id=="ilan"):
+            link = "https://www.instagram.com/p/CcOat3FurQ_/"
+            follow_link = "https://www.instagram.com/ilan_reserva_/"
+        elif(id=="chris"):
+            link = "https://www.instagram.com/p/CcdlAcxrMN8/"
+            follow_link = "https://www.instagram.com/premiosgratislm/"
+        return {'link': link, 'follow_link': follow_link}
 
     def trocar_conta(self):
         driver = self.driver
@@ -127,7 +139,6 @@ class InstaBot:
 
     def rolar_no_explorar(self, tempo):
         driver = self.driver
-        links_de_posts = []
         time.sleep(5)
         driver.get("https://www.instagram.com/explore/")
         for i in range(random.randint(8, 10)): 

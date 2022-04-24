@@ -11,6 +11,7 @@ from webbrowser import get
 import pdb
 import sys
 from insta_bot import InstaBot
+import re
 
 class Follow(InstaBot):
     def __init__(self):
@@ -26,6 +27,13 @@ class Follow(InstaBot):
             driver.execute_script(
                 "window.scrollTo(0, document.body.scrollHeight);")
             time.sleep(tempo)
+
+    def get_link(self, id):
+        driver = self.driver
+        time.sleep(5)
+        self.rolar_no_explorar(30)
+        dict = self.giveaway_data(id)
+        return dict["follow_link"]
 
     def scroll_down(self, scroll):
         driver = self.driver
@@ -51,6 +59,14 @@ class Follow(InstaBot):
             main_user[0].click()
         time.sleep(2)
 
+    def following_number(self):
+        driver = self.driver
+        content = driver.find_element_by_xpath("//meta[@property='og:description']").get_attribute("content")
+        regexp = re.compile(', (\d+) Following')
+
+        return int( regexp.search(content) )
+
+
     def get_list(self):
         driver = self.driver
         user_list = driver.find_elements_by_xpath("//*[text()='Follow']")
@@ -68,20 +84,19 @@ class Follow(InstaBot):
             return False
 
 
-    def mainnn(self, perfil, id):
+    def main(self, perfil, id):
         driver = self.driver
         self.login(perfil)        
-        if(id=="iphone"):
-            link="https://www.instagram.com/sorteiosjohn/"
-            scroll = 7
-        elif(id=="big"):
-            link="https://www.instagram.com/projeto_onix_"
-            scroll = 14
+        link = self.get_link(id)
+
         driver.get(link)
         time.sleep(5)
-
-        self.open_box(scroll)
+        pdb.set_trace()
+        number = self.following_number()
         self.follow_user()
+
+        scroll_factor = number/9 + 1
+        self.open_box(scroll_factor)
         user_list = self.get_list()
 
         if len(user_list) != 0:
@@ -91,14 +106,16 @@ class Follow(InstaBot):
         for user in user_list:
             try:
                 user.click()
-                time.sleep(30)
+                time.sleep(10)
             except Exception as e:
                 print(e)
                 pass
-        self.rolar_no_explorar(30)
+            if (user_list.index(user) + 1) % 15 == 0:
+                self.rolar_no_explorar(10)
+                
         self.relatorio(len(user_list), perfil, id)
 
 
 follow = Follow()
-follow.mainnn(int(sys.argv[1]) ,sys.argv[2])
+follow.main(int(sys.argv[1]) ,sys.argv[2])
 follow.sair()
