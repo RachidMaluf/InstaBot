@@ -1,6 +1,6 @@
 from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.firefox.service import Service
+from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.common.keys import Keys
 import time
 import random
@@ -11,13 +11,14 @@ import sys
 
 class InstaBot:
     def __init__(self):
-        service = Service('./chromedriver')
-        options = Options()
-        # options.set_preference("intl.accept_languages", "pt,pt-BR")
-        # options.set_preference("dom.webnotifications.enabled", False)
-        self.driver = webdriver.Chrome(
-            options=options, service=service
-        )
+        # service = Service('./geckodriver')
+        # options = Options()
+        # # options.set_preference("intl.accept_languages", "pt,pt-BR")
+        # # options.set_preference("dom.webnotifications.enabled", False)
+        # self.driver = webdriver.Firefox(
+        #     options=options, service=service
+        # )
+        driver = "a"
 
     @staticmethod
     def digite_que_nem_gente(sentence, single_input_field):
@@ -27,25 +28,10 @@ class InstaBot:
 
     def giveaway_data(self, id = "all"):
         time.sleep(5)
-        self.rolar_no_explorar(30)
-        if(id=="iphone"):
-            link = "https://www.instagram.com/p/CcGRXzLFdfW/"
-            follow_link = "https://www.instagram.com/sorteiosjohn/"
-        elif(id=="gomez"):
-            link = "https://www.instagram.com/p/CcWQSHUrs15/"
-            follow_link = "https://www.instagram.com/acao500gratis/"
-        elif(id=="gustavo"):
-            link = "https://www.instagram.com/p/CcN0UrbuIc3/"
-            follow_link = "https://www.instagram.com/gustavin_assessoria/"
-        elif(id=="bruno"):
-            link = "https://www.instagram.com/p/CcapO5cuNW0/"
-            follow_link = "https://www.instagram.com/2.000_no_pix_projeto_brunao/"
-        elif(id=="ilan"):
-            link = "https://www.instagram.com/p/CcOat3FurQ_/"
-            follow_link = "https://www.instagram.com/ilan_reserva_/"
-        elif(id=="chris"):
-            link = "https://www.instagram.com/p/CcdlAcxrMN8/"
-            follow_link = "https://www.instagram.com/premiosgratislm/"
+        #self.rolar_no_explorar(30)
+        if(id=="leao"):
+            link = "https://www.instagram.com/p/Cp3gMsqLd_3"
+            follow_link = "https://instagram.com/premiando.geral"
         return {'link': link, 'follow_link': follow_link}
 
     def trocar_conta(self):
@@ -192,3 +178,4 @@ class InstaBot:
             arquivo.close()
             print("Relatório registrado, perfil:",perfil)
     
+a=InstaBot()

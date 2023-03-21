@@ -1,6 +1,6 @@
 from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.firefox.options import Options
+from selenium.webdriver.firefox.service import Service
 from selenium.webdriver.common.keys import Keys
 import time
 import random
@@ -202,12 +202,18 @@ emojis = [
                         "🦨🦡🦦🦥🍃🍂🍄🍄🪨🌾💐🌹🥀🌺🌼🌻🌞🌝🌛🌚"
         ]
 giveaway_list = [
-    "iphone", "gomez", "gustavo", "bruno", "ilan", "motovlog"
+    "leao"
 ]
 
 class Comment(InstaBot):
     def __init__(self):
-        super().__init__()
+        service = Service('./geckodriver')
+        options = Options()
+        # options.set_preference("intl.accept_languages", "pt,pt-BR")
+        # options.set_preference("dom.webnotifications.enabled", False)
+        self.driver = webdriver.Firefox(
+            options=options, service=service
+        )
 
     def get_link(self, id):
         driver = self.driver
@@ -220,7 +226,7 @@ class Comment(InstaBot):
         driver = self.driver
         texto=random.choice(comments)
         try:
-            comment_input_box = driver.find_element_by_class_name("Ypffh")
+            comment_input_box = driver.find_element_by_xpath("//*[@aria-label='Add a comment…']")
             comment_input_box.click()
             
             time.sleep(random.randint(2, 7))
@@ -440,7 +446,7 @@ class Comment(InstaBot):
         fail=0
         tempo=500
 
-        self.rolar_no_explorar(30)
+        #self.rolar_no_explorar(30)
         link = self.get_link(id)
         driver.get(link)
         time.sleep(10)
@@ -448,13 +454,15 @@ class Comment(InstaBot):
         for i in range(600):
             texto=random.choice(comments)
             try:
-                comment_input_box = driver.find_element_by_class_name("Ypffh")
-                comment_input_box.click()
+                comment_input_box = driver.find_element_by_xpath("//*[@aria-label='Add a comment…']")
+                #if i == 1:
+                comment_input_box.click() 
                 
                 time.sleep(random.randint(2, 7))
+                print(".")
                 self.digite_que_nem_gente(texto,comment_input_box)
                 time.sleep(random.randint(1, 6))
-
+                print(".")
                 driver.find_element_by_xpath("//div[contains(text(),'Post')]/..").click()
 
                 print("Comentou " + id)
@@ -502,8 +510,6 @@ class Comment(InstaBot):
                         iterac=0
                         time.sleep(5)
                         iterac+=self.comment("xre")
-                        time.sleep(5)
-                        iterac+=self.comment("audi")
                         time.sleep(5)
                         iteracTotal+=iterac
                         final=time.time()
